@@ -28,11 +28,11 @@ def datapreparation(xlsx_file):
 def necadj(n_samples, smallcratio):
  
     if n_samples <= 10:  # Only for Classical/World genres (4 samples)
-        C = 10.0  # Reduced from 100 to prevent over-regularization
-        gamma = 'scale'  # Default behavior (was 0.5)
-        class_weight = 'balanced'  # Use sklearn's balanced weighting instead of 1.0/minority_ratio
+        C = 10.0  
+        gamma = 'scale'  
+        class_weight = 'balanced'  
     else:
-        # Original settings that gave you 62% accuracy
+        # initial settings with 60% accuracy
         C = 1.0
         gamma = 'scale'
         class_weight = 'balanced'
