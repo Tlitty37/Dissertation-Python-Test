@@ -61,7 +61,7 @@ def stratified_excel_split(input_file, output_file,
     print("- 'Distribution_Summary' sheet: Class distribution report")
 
 if __name__ == "__main__":
-    input_file="/Users/tobylodge/Downloads/Training and Test Data Dissertation/genre_splits/testtrain_Blues.xlsx"  # Update with your file path
+    input_file="/Users/tobylodge/Downloads/Training and Test Data Dissertation/genre_splits/testtrain_Blues.xlsx"  
     output_file="test_trainiing_songs_output_Blues.xlsx"
     
     stratified_excel_split(input_file=input_file, output_file=output_file, feature_cols=['Polarity', 'Subjectivity'], target_col='Mode', test_size=0.7, random_state=42)
