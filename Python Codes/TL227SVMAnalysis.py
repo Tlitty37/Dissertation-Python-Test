@@ -43,30 +43,20 @@ def dotheSVM(trainingsentiment, labeltraining, smallcratio):
     n_samples = len(labeltraining)
     params = necadj(n_samples, smallcratio)
     
-    # Keep your original pipeline structure
-    pipeline = make_pipeline(
-        StandardScaler(), 
-        SVC(
-            kernel='rbf',
-            C=params['C'],
-            gamma=params['gamma'],
-            class_weight=params['class_weight'],
-            probability=True,
-            random_state=42
-        )
-    )
+  
+    pipeline = make_pipeline(StandardScaler(), SVC(kernel='rbf', C=params['C'], gamma=params['gamma'], class_weight=params['class_weight'], probability=True, random_state=42))
     
-    # Your original grid search parameters
+    
     param_grid = {
-        'svc__C': [0.1, 1, 10],  # Original range
-        'svc__gamma': ['scale', 'auto']  # Original options
+        'svc__C': [0.1, 1, 10],  
+        'svc__gamma': ['scale', 'auto']  
     }
     
-    # Use standard 5-fold CV (no min(n_samples) to match original behavior
+    
     model = GridSearchCV(
         pipeline,
         param_grid,
-        cv=5,  # Original setting
+        cv=5,  
         scoring='balanced_accuracy',
         n_jobs=-1
     )
